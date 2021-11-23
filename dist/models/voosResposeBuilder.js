@@ -27,9 +27,22 @@ var builderResponse = function (whereFrom, whereTo, howManyPeople, departureDate
             returnDate: roundTrip ? returnDate : '',
             returnHour: roundTrip ? (0, moment_1.default)().hour(Math.floor(Math.random() * 23))
                 .minute(Math.floor(Math.random() * 60)).format('LT') : '',
+            freeSeatsGoing: makeSeats(),
+            freeSeatsReturn: roundTrip ? makeSeats() : [''],
         };
         response.push(trip);
     }
     return response;
 };
 exports.builderResponse = builderResponse;
+var makeSeats = function () {
+    var seats = ['3B', '2F', '9G', '2D', '6G', '5F', '4F', '3D', '2A', '8A',
+        '7F', '4C', '1A', '1B', '1C', '2B', '2C', '5D', '6F', '9A'];
+    var numberOfSeats = Math.floor(Math.random() * 13 + 1);
+    var availableSeats = [];
+    for (var i = 0; i < numberOfSeats; i++) {
+        var index = Math.floor(Math.random() * seats.length);
+        availableSeats.includes(seats[index]) ? '' : availableSeats.push(seats[index]);
+    }
+    return availableSeats;
+};

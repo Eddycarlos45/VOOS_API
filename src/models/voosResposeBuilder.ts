@@ -17,7 +17,7 @@ export const builderResponse = (
 
   const NumberOfTrips = Math.floor(Math.random() * 3 + 1);
 
-  const response = [];
+  const response: Voos[] = [];
 
   for (let i = 0; i < NumberOfTrips; i++) {
 
@@ -36,6 +36,8 @@ export const builderResponse = (
       returnDate: roundTrip ? returnDate : '',
       returnHour: roundTrip ? moment().hour(Math.floor(Math.random() * 23))
         .minute(Math.floor(Math.random() * 60)).format('LT') : '',
+      freeSeatsGoing: makeSeats(),
+      freeSeatsReturn: roundTrip ? makeSeats() : [''],
     }
 
     response.push(trip)
@@ -43,3 +45,21 @@ export const builderResponse = (
   return response
 
 }
+
+const makeSeats = (): string[] => {
+  const seats =
+    ['3B', '2F', '9G', '2D', '6G', '5F', '4F', '3D', '2A', '8A',
+      '7F', '4C', '1A', '1B', '1C', '2B', '2C', '5D', '6F', '9A'];
+  const numberOfSeats = Math.floor(Math.random() * 13 + 1);
+  const availableSeats: string[] = [];
+
+  for (let i = 0; i < numberOfSeats; i++) {
+    const index = Math.floor(Math.random() * seats.length);
+
+    availableSeats.includes(seats[index]) ? '' : availableSeats.push(seats[index]);
+
+  }
+
+  return availableSeats;
+
+} 

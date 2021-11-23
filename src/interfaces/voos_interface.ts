@@ -9,5 +9,7 @@ export interface Voos {
   departureDate: string,
   departureHour: string,
   returnDate: string,
-  returnHour: string
+  returnHour: string,
+  freeSeatsGoing: string[],
+  freeSeatsReturn: string[],
 }
