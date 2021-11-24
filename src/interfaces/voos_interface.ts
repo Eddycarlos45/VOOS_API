@@ -1,5 +1,5 @@
 export interface Voos {
-  price: string,
+  price: number,
   company: string,
   whereFrom: string,
   cityFrom?: string,

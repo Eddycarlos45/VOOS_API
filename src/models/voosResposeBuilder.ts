@@ -21,7 +21,7 @@ export const builderResponse = (
 
   for (let i = 0; i < NumberOfTrips; i++) {
 
-    const price = `R$: ${Math.floor(Math.random() * 999) + 100},${Math.floor(Math.random() * 99)}`;
+    const price = Math.floor(Math.random() * 999) + 100;
 
     const trip: Voos = {
       price: price,
